@@ -1,17 +1,15 @@
 function fetchData() {
-  return new Promise((resolve) => {
-    resolve('peanut butter')
+  return new Promise((resolve, reject) => {
+    resolve('peanuts butter')
   })
 }
 
 test('the data is peanut butter', () => {
   expect.assertions(1)
-  return fetchData().then(data => {
-    expect(data).toBe('peanut butter')
-  })
+  return expect(fetchData()).resolves.toBe('peanuts butter')
 })
 
-function fetchDataWithException() {
+function fetchDataWithReject() {
   return new Promise((resolve, reject) => {
     reject('error')
   })
@@ -19,5 +17,5 @@ function fetchDataWithException() {
 
 test('the fetch fails with an error', () => {
   expect.assertions(1)
-  return fetchDataWithException().catch(e => expect(e).toMatch('error'))
+  return expect(fetchDataWithReject()).rejects.toMatch('error')
 })
