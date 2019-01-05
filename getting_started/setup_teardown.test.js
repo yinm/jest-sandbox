@@ -1,37 +1,38 @@
 let database
 
 function initializeCityDatabase() {
-  database = [
-    'Vienna',
-    'San Juan',
-    'Tokyo'
-  ]
+  return new Promise((resolve, reject) => {
+    database = [
+      'Vienna',
+      'San Juan'
+    ]
+    resolve()
+  })
 }
 
 function clearCityDatabase() {
-  database = []
+  return new Promise((resolve, reject) => {
+    database = []
+    resolve()
+  })
 }
 
 function isCity(city) {
   return database.includes(city)
 }
 
-beforeEach(() => {
-  initializeCityDatabase()
+beforeAll(() => {
+  return initializeCityDatabase()
 })
 
-afterEach(() => {
-  clearCityDatabase()
+afterAll(() => {
+  return clearCityDatabase()
 })
 
 test('city database has Vienna', () => {
   expect(isCity('Vienna')).toBeTruthy()
 })
 
-test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy()
-})
-
-test('city database does not have Osaka', () => {
-  expect(isCity('Osaka')).toBeFalsy()
+test('city database does not have Tokyo', () => {
+  expect(isCity('Tokyo')).toBeFalsy()
 })
