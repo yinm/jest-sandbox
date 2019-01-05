@@ -1,10 +1,7 @@
-test('Check mock return value', () => {
-  const filterTestFn = jest.fn()
+test('check mock', () => {
+  const myMockFn = jest.fn(cb => cb(null, true))
 
-  filterTestFn.mockReturnValueOnce(true).mockReturnValueOnce(false)
+  myMockFn((err, val) => console.log(val))
 
-  const result = [11, 12].filter(filterTestFn)
-
-  console.log(result)
-  console.log(filterTestFn.mock.calls)
+  myMockFn((err, val) => console.log(val))
 })
