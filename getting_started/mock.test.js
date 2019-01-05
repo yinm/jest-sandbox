@@ -1,11 +1,9 @@
 test('check mock', () => {
-  const myObj = {
-    myMethod: jest.fn().mockReturnThis()
-  }
+  const myMockFn = jest
+    .fn()
+    .mockReturnValue('default')
+    .mockImplementation(scalar => 42 + scalar)
+    .mockName('add42')
 
-  const otherObj = {
-    myMethod: jest.fn(function() {
-      return this
-    })
-  }
+  expect(myMockFn(10)).toBe(52)
 })
