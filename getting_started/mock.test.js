@@ -1,11 +1,12 @@
-test('check mock', () => {
+test('check returns of Mock', () => {
   const myMock = jest.fn()
+  console.log(myMock())
 
-  const a = new myMock()
-  const b = {}
-  const bound = myMock.bind(b)
-  bound()
+  myMock
+    .mockReturnValueOnce(10)
+    .mockReturnValueOnce('x')
+    .mockReturnValue(true)
 
-  console.log(myMock.mock.instances)
+  console.log(myMock(), myMock(), myMock(), myMock())
 })
 
