@@ -1,4 +1,4 @@
-test('check mock', () => {
+test('mock implementation', () => {
   jest.mock('./foo')
   const foo = require('./foo')
 
