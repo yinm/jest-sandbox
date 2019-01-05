@@ -1,8 +1,11 @@
 test('check mock', () => {
-  const myMockFn = jest
-    .fn(() => 'default')
-    .mockImplementationOnce(() => 'first call')
-    .mockImplementationOnce(() => 'second call')
+  const myObj = {
+    myMethod: jest.fn().mockReturnThis()
+  }
 
-  console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn())
+  const otherObj = {
+    myMethod: jest.fn(function() {
+      return this
+    })
+  }
 })
