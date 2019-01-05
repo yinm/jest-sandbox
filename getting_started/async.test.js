@@ -1,12 +1,13 @@
 function fetchData() {
   return new Promise((resolve, reject) => {
-    resolve('peanuts butter')
+    resolve('peanut butter')
   })
 }
 
-test('the data is peanut butter', () => {
+test('thee data is peanut butter', async () => {
   expect.assertions(1)
-  return expect(fetchData()).resolves.toBe('peanuts butter')
+  const data = await fetchData()
+  expect(data).toBe('peanut butter')
 })
 
 function fetchDataWithReject() {
@@ -15,7 +16,11 @@ function fetchDataWithReject() {
   })
 }
 
-test('the fetch fails with an error', () => {
+test('the fetch fails with an error', async () => {
   expect.assertions(1)
-  return expect(fetchDataWithReject()).rejects.toMatch('error')
+  try {
+    await fetchDataWithReject()
+  } catch (e) {
+    expect(e).toMatch('error')
+  }
 })
