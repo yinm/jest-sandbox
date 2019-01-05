@@ -1,15 +1,8 @@
 test('check mock', () => {
   const myMockFn = jest
-    .fn()
-    .mockImplementationOnce(cb => cb(null, true))
-    .mockImplementationOnce(cb => cb(null, false))
+    .fn(() => 'default')
+    .mockImplementationOnce(() => 'first call')
+    .mockImplementationOnce(() => 'second call')
 
-  myMockFn((err, val) => console.log(val))
-  myMockFn((err, val) => console.log(val))
+  console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn())
 })
-
-function noname(cb) {
-  cb(null, true)
-}
-noname((err, val) => console.log(val))
-
