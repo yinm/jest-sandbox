@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.2.3",
+    "jest": "^23.6.0"
+  }
+}
